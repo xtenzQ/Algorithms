@@ -24,8 +24,8 @@ jobs:
     - name: Set up the Java JDK
       uses: actions/setup-java@v2
       with:
-        java-version: '8'
-        distribution: 'oracle'
+        java-version: 11
+        distribution: 'adopt'
 
     - name: Test with Maven
       run: mvn -B test
