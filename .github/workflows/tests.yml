@@ -1,8 +1,14 @@
-name: test
+name: tests
 
 on:
   push:
     branches: [ main ]
+    paths:
+    - 'src/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+    - 'src/**'
 
 jobs:
   build:
@@ -17,7 +23,7 @@ jobs:
         java-version: 11
         distribution: 'adopt'
 
-    - name: Build with Maven
+    - name: Test with Maven
       run: mvn -B test
 
     - name: Generate JaCoCo Badge
