@@ -2,6 +2,10 @@
 [![tests](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml/badge.svg)](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml)
 ![Coverage](.github/badges/jacoco.svg)
 
+## LeetCode
+
+- Subsets / [problem](https://leetcode.com/problems/subsets/description/) / [code](src/main/java/com/xtenzq/leetcode/Subsets.java)
+
 ## Hackerrank
 
 Medium:
