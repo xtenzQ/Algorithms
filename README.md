@@ -1,5 +1,5 @@
 # Algorithms
-[![test](actions/workflows/test-coverage.yml/badge.svg?branch=main)](actions/workflows/test-coverage.yml)
+[![tests](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml/badge.svg)](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml)
 ![Coverage](.github/badges/jacoco.svg)
 
 ## Hackerrank
