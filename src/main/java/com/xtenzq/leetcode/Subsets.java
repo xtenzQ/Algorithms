@@ -18,6 +18,5 @@ public class Subsets {
         find(set, nums, new ArrayList<>(temp), index + 1);
         temp.add(nums[index]);
         find(set, nums,new ArrayList<>(temp), index + 1);
-        temp.remove(temp.size() - 1);
     }
 }
