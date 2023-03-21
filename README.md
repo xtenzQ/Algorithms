@@ -1,6 +1,9 @@
 # Algorithms
-[![tests](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml/badge.svg)](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tests](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml/badge.svg)](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml)
 ![Coverage](.github/badges/jacoco.svg)
+
+This repository contains my implementations of algorithms and data structures in Java, with the goal of improving my problem-solving skills. In addition to algorithms and data structures, it also contains solutions to problems from Hackerrank, Leetcode, and Codeforces.
 
 ## LeetCode
 
