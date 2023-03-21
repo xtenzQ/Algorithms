@@ -1,5 +1,6 @@
 # Algorithms
-[![tests](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml/badge.svg)](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tests](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml/badge.svg)](https://github.com/xtenzQ/Algorithms/actions/workflows/tests.yml)
 ![Coverage](.github/badges/jacoco.svg)
 
 ## LeetCode
