@@ -10,29 +10,28 @@ class AddTwoNumbersTest {
 
     @Test
     void testSetOne() {
-        ListNode first = ListNode.build(new int[] { 2, 4, 3 });
-        ListNode second = ListNode.build(new int[] { 5, 6, 4 });
+        ListNode first = ListNode.build(new int[]{2, 4, 3});
+        ListNode second = ListNode.build(new int[]{5, 6, 4});
         ListNode result = addTwoNumbers(first, second);
-        ListNode expected = ListNode.build(new int[] { 7, 0, 8 });
+        ListNode expected = ListNode.build(new int[]{7, 0, 8});
         assertEquals(expected, result);
     }
 
     @Test
     void testSetTwo() {
-        ListNode first = ListNode.build(new int[] { 0 });
-        ListNode second = ListNode.build(new int[] { 0 });
+        ListNode first = ListNode.build(new int[]{0});
+        ListNode second = ListNode.build(new int[]{0});
         ListNode result = addTwoNumbers(first, second);
-        ListNode expected = ListNode.build(new int[] { 0 });
+        ListNode expected = ListNode.build(new int[]{0});
         assertEquals(expected, result);
     }
 
     @Test
     void testSetThird() {
-        ListNode first = ListNode.build(new int[] { 9,9,9,9,9,9,9 });
-        ListNode second = ListNode.build(new int[] { 9,9,9,9 });
+        ListNode first = ListNode.build(new int[]{9, 9, 9, 9, 9, 9, 9});
+        ListNode second = ListNode.build(new int[]{9, 9, 9, 9});
         ListNode result = addTwoNumbers(first, second);
-        ListNode expected = ListNode.build(new int[] { 8,9,9,9,0,0,0,1 });
-        System.out.println(result);
+        ListNode expected = ListNode.build(new int[]{8, 9, 9, 9, 0, 0, 0, 1});
         assertEquals(expected, result);
     }
 }
