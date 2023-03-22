@@ -12,7 +12,7 @@ class CTest extends AbstractCodeforcesTest {
     @Test
     public void testSetOne() {
         provideFile(prefix + "CInput.txt");
-        B.main(new String[]{});
+        C.main(new String[]{});
         assertEquals(readFile(prefix + "COutput.txt"), getOutput());
     }
 }
