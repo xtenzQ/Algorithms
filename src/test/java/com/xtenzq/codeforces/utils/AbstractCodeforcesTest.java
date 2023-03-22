@@ -8,7 +8,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-public class AbstractCodeforcesTest {
+public abstract class AbstractCodeforcesTest {
 
     private final InputStream systemIn = System.in;
     private final PrintStream systemOut = System.out;
