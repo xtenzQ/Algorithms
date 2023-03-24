@@ -27,3 +27,6 @@ Sorting algorithms:
 - Comparison based sorts
   - Selection sort / [code](src/main/java/com/xtenzq/algorithms/SelectionSort.java)
   - Bubble sort / [code](src/main/java/com/xtenzq/algorithms/BubbleSort.java)
+
+## Data Structures
+- Suffix Array / [code](src/main/java/com/xtenzq/datastructures/SuffixArray.java)
