@@ -1,12 +1,14 @@
 package com.xtenzq.datastructures;
 
-public class LCPArray {
+import com.xtenzq.datastructures.utils.Entry;
+import com.xtenzq.datastructures.utils.GenericArray;
 
-    private final LCPEntry[] LCPArray;
+public class LCPArray extends GenericArray<LCPArray.LCPEntry> {
 
     public LCPArray(String text) {
+        super(LCPEntry.class, text.length());
         SuffixArray suffixArray = new SuffixArray(text);
-        LCPArray = new LCPEntry[suffixArray.getSize()];
+        array = new LCPEntry[suffixArray.getSize()];
         build(suffixArray);
     }
 
@@ -14,7 +16,7 @@ public class LCPArray {
         String previous = "";
         int index = 0;
         for (SuffixArray.SuffixEntry entry : suffixArray) {
-            LCPArray[index] = new LCPEntry(getCommonSubstring(previous, entry.getValue()), entry);
+            array[index] = new LCPEntry(getCommonSubstring(previous, entry.getValue()), entry);
             previous = entry.getValue();
             index++;
         }
@@ -34,18 +36,10 @@ public class LCPArray {
         return sub;
     }
 
-    private static class LCPEntry {
-        final int value;
-        final SuffixArray.SuffixEntry suffixEntry;
+    static class LCPEntry extends Entry<Integer, SuffixArray.SuffixEntry> {
 
         public LCPEntry(int value, SuffixArray.SuffixEntry suffixEntry) {
-            this.value = value;
-            this.suffixEntry = suffixEntry;
-        }
-
-        @Override
-        public String toString() {
-            return "[" + value + ": " + suffixEntry + "]";
+            super(value, suffixEntry);
         }
     }
 }
