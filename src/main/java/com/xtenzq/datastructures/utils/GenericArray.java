@@ -1,11 +1,17 @@
 package com.xtenzq.datastructures.utils;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * An abstract array of {@param T} type which allows iteration over itself
+ * @param <T> type of array
+ *
+ * @author Nikita Rusetskii
+ */
 public abstract class GenericArray<T> implements Iterable<T> {
-
     protected T[] array;
 
     public int getSize() {
@@ -14,7 +20,14 @@ public abstract class GenericArray<T> implements Iterable<T> {
 
     private int size;
 
+    private GenericArray() {
+
+    }
+
     public GenericArray(Class<T> componentType, int capacity) {
+        if (capacity <= 0) {
+            throw new IllegalArgumentException("Capacity can't be zero or negative.");
+        }
         this.array = (T[]) Array.newInstance(componentType, capacity);
         this.size = capacity;
     }
@@ -29,6 +42,11 @@ public abstract class GenericArray<T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Itr();
+    }
+
+    @Override
+    public String toString() {
+        return Arrays.toString(array);
     }
 
     private class Itr implements Iterator<T> {
