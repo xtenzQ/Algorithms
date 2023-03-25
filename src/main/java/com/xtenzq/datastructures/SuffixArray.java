@@ -1,63 +1,92 @@
 package com.xtenzq.datastructures;
 
-import com.xtenzq.datastructures.utils.Entry;
 import com.xtenzq.datastructures.utils.GenericArray;
 
 import java.util.Arrays;
 
 /**
- *
+ * Suffix array is an array which contains all the sorted suffixes of a string
  *
  * @author Niktia Rusetskii
  */
-public class SuffixArray extends GenericArray<SuffixArray.SuffixEntry> {
+public class SuffixArray extends GenericArray<SuffixArray.Suffix> {
     private final String text;
 
     public SuffixArray(String text) {
-        super(SuffixEntry.class, text.length());
+        super(Suffix.class, text.length());
         this.text = text;
         build();
         // sort alphabetically
         Arrays.sort(this.array);
     }
 
+    /**
+     * Construct a suffix by taking a substring from the end of a string to the beginning.
+     * Time complexity: O(n)
+     */
     private void build() {
         for (int i = getSize() - 1; i >= 0; i--) {
-            array[i] = new SuffixEntry(i, text.substring(i, getSize()));
+            array[i] = new Suffix(text.substring(i, getSize()));
         }
     }
 
-    @Override
-    public String toString() {
-        return Arrays.toString(array);
+    /**
+     * Converts SuffixArray into array of strings
+     * @return array of strings
+     */
+    public String[] toStringArray() {
+        String[] res = new String[getSize()];
+        for (int i = 0; i < getSize(); i++) {
+            res[i] = array[i].getValue();
+        }
+        return res;
     }
 
-    public static class SuffixEntry extends Entry<Integer, String> implements Comparable<SuffixEntry> {
-
-        SuffixEntry(Integer index, String value) {
-            super(index, value);
+    /**
+     * Suffix is a substring at the end of a string of characters
+     */
+    static class Suffix implements Comparable<Suffix> {
+        public String getValue() {
+            return value;
         }
 
+        private final String value;
+        private final int size;
+
+        public Suffix(String value) {
+            this.value = value;
+            this.size = value.length();
+        }
+        /**
+         * Sort suffix alphabetically
+         *
+         * @param o the object to be compared.
+         * @return result of comparison
+         */
         @Override
-        public int compareTo(SuffixEntry o) {
-            String other = o.getValue();
-            int minSize = Math.min(getValue().length(), other.length());
+        public int compareTo(Suffix o) {
+            int minSize = Math.min(size, o.getValue().length());
             // soft alphabetically first
             for (int i = 0; i < minSize; i++) {
-                if (getValue().charAt(i) > other.charAt(i)) {
+                if (value.charAt(i) > o.getValue().charAt(i)) {
                     return 1;
-                } else if (getValue().charAt(i) < other.charAt(i)) {
+                } else if (value.charAt(i) < o.getValue().charAt(i)) {
                     return -1;
                 }
             }
             // if strings are equal then sort by length
-            if (getValue().length() < o.getValue().length()) {
+            if (value.length() < o.getValue().length()) {
                 return -1;
             }
-            else if (getValue().length() > o.getValue().length()) {
+            else if (value.length() > o.getValue().length()) {
                 return 1;
             }
             return 0;
+        }
+
+        @Override
+        public String toString() {
+            return value;
         }
     }
 }
