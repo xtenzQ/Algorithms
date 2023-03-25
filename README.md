@@ -30,3 +30,4 @@ Sorting algorithms:
 
 ## Data Structures
 - Suffix Array / [code](src/main/java/com/xtenzq/datastructures/SuffixArray.java)
+- LCP Array / [code](src/main/java/com/xtenzq/datastructures/LCPArray.java)
