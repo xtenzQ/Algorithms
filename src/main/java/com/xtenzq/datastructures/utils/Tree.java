@@ -35,7 +35,7 @@ public interface Tree<T> {
      * @throws NullPointerException if the specified value is null and this
      *         tree does not permit null nodes
      */
-    T remove(T value);
+    void remove(T value);
 
     /**
      * Removes all of the elements from this list. The list will be empty after this call returns.
