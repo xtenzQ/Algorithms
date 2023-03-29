@@ -20,13 +20,15 @@ public interface Tree<T> {
 
     /**
      * Sets the root node of the tree.
-     *
+     * @throws UnsupportedOperationException if the {@code remove} operation
+     *         is not supported by this tree
      * @param root the root node to be set
      */
     void setRoot(Node<T> root);
 
     /**
-     * Returns the number of nodes in the tree.
+     * Returns the number of nodes in the tree. If the tree contains more than
+     * {@code Integer.MAX_VALUE} nodes, returns {@code Integer.MAX_VALUE}.
      *
      * @return the number of nodes in the tree
      */
@@ -41,11 +43,21 @@ public interface Tree<T> {
 
     /**
      * Returns the depth of the tree (i.e. the maximum distance from the root to a leaf node).
+     * If the tree depth is more than {@code Integer.MAX_VALUE} nodes, returns {@code Integer.MAX_VALUE}.
      *
      * @return the depth of the tree
      */
     int depth();
 
+    /**
+     * Returns {@code true} if this tree contains the specified {@code value}.
+     *
+     * @param value value whose presence in this tree is to be tested
+     * @return {@code true} if this tree contains the specified element
+     */
+    boolean contains(Object value);
+
+    // Traversal operations
     /**
      * Returns a list of nodes in pre-order traversal.
      *
@@ -77,7 +89,7 @@ public interface Tree<T> {
      * @param element the element to be stored in the new node
      * @throws ClassCastException if the class of the specified element
      *         prevents it from being inserted into this tree
-     * @throws NullPointerException if the specified element is null and this
+     * @throws NullPointerException if the specified node is null and this
      *         tree does not permit null elements
      * @throws IllegalArgumentException if some property of this element
      *         prevents it from being inserted into this tree
@@ -89,6 +101,12 @@ public interface Tree<T> {
      * Removes the specified node from the tree.
      *
      * @param node the node to be removed
+     * @throws ClassCastException if the type of the specified element
+     *         is incompatible with this tree
+     * @throws NullPointerException if the specified node is null and this
+     *         tree does not permit null elements
+     * @throws UnsupportedOperationException if the {@code remove} operation
+     *         is not supported by this tree
      */
     void removeNode(Node<T> node);
 
