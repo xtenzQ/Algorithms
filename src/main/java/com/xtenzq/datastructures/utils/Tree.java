@@ -1,6 +1,6 @@
 package com.xtenzq.datastructures.utils;
 
-import java.util.List;
+import com.xtenzq.datastructures.lists.List;
 
 /**
  * An abstract data type representing a hierarchical tree structure consisting of connected nodes.
@@ -12,182 +12,92 @@ import java.util.List;
 public interface Tree<T> {
 
     /**
-     * Returns the root node of the tree.
+     * Inserts the specified value into the tree.
      *
-     * @return the root node of the tree
+     * @param value the value to be inserted into this tree
+     * @return {@code true} if this tree changed as a result of the insertion
+     * @throws ClassCastException if the class of the specified element
+     *         prevents it from being inserted into this tree
+     * @throws NullPointerException if the specified element is null and this
+     *         tree does not permit null elements
+     * @throws IllegalArgumentException if some property of this element
+     *         prevents it from being inserted into this tree
      */
-    Node<T> getRoot();
+    boolean insert(T value);
 
     /**
-     * Sets the root node of the tree.
+     * Removes the node with the specified value from this tree (optional operation).
+     * If this tree contains a node with the value {@code value}, that node is removed.
+     *
+     * @param value the value to be removed from this tree
      * @throws UnsupportedOperationException if the {@code remove} operation
      *         is not supported by this tree
-     * @param root the root node to be set
+     * @throws ClassCastException if the value is of an inappropriate type for
+     *         this tree
+     * @throws NullPointerException if the specified value is null and this
+     *         tree does not permit null nodes
      */
-    void setRoot(Node<T> root);
+    void remove(T value);
 
     /**
-     * Returns the number of nodes in the tree. If the tree contains more than
+     * Removes all nodes from this tree. The tree will be empty after this call returns.
+     */
+    void clear();
+
+    /**
+     * Returns {@code true} if this tree contains the specified value.
+     *
+     * @param value the value whose presence in this tree is to be tested
+     * @return {@code true} if this tree contains one or more nodes with the
+     *         specified value
+     * @throws ClassCastException if the value is of an inappropriate type for
+     *         this tree
+     * @throws NullPointerException if the specified value is null and this
+     *         tree does not permit null values
+     */
+    boolean contains(T value);
+
+    /**
+     * Returns the number of nodes in this tree. If the tree contains more than
      * {@code Integer.MAX_VALUE} nodes, returns {@code Integer.MAX_VALUE}.
      *
-     * @return the number of nodes in the tree
+     * @return the number of nodes in this tree
      */
     int size();
 
     /**
-     * Returns true if the tree is empty, false otherwise.
+     * Returns {@code true} if this tree contains no nodes.
      *
-     * @return true if the tree is empty, false otherwise
+     * @return {@code true} if this tree contains no nodes
      */
     boolean isEmpty();
 
     /**
-     * Returns the depth of the tree (i.e. the maximum distance from the root to a leaf node).
-     * If the tree depth is more than {@code Integer.MAX_VALUE} nodes, returns {@code Integer.MAX_VALUE}.
-     *
-     * @return the depth of the tree
-     */
-    int depth();
-
-    /**
-     * Returns {@code true} if this tree contains the specified {@code value}.
-     *
-     * @param value value whose presence in this tree is to be tested
-     * @return {@code true} if this tree contains the specified element
-     */
-    boolean contains(Object value);
-
-    // Traversal operations
-    /**
-     * Returns a list of nodes in pre-order traversal.
-     *
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *         is not supported by this tree
-     * @return a list of nodes in pre-order traversal
-     */
-    List<Node<T>> preOrder();
-
-    /**
-     * Returns a list of nodes in post-order traversal.
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *         is not supported by this tree
-     * @return a list of nodes in post-order traversal
-     */
-    List<Node<T>> postOrder();
-
-    /**
-     * Returns a list of nodes in level-order traversal.
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *         is not supported by this tree
-     * @return a list of nodes in level-order traversal
-     */
-    List<Node<T>> levelOrder();
-
-    /**
-     * Adds a new node to the tree with the specified parent node and element.
-     * @param parent the parent node of the new node
-     * @param element the element to be stored in the new node
-     * @throws ClassCastException if the class of the specified element
-     *         prevents it from being inserted into this tree
-     * @throws NullPointerException if the specified node is null and this
-     *         tree does not permit null elements
-     * @throws IllegalArgumentException if some property of this element
-     *         prevents it from being inserted into this tree
-     * @return the new node that was added to the tree
-     */
-    Node<T> addNode(Node<T> parent, T element);
-
-    /**
-     * Removes the specified node from the tree.
-     *
-     * @param node the node to be removed
-     * @throws ClassCastException if the type of the specified element
-     *         is incompatible with this tree
-     * @throws NullPointerException if the specified node is null and this
-     *         tree does not permit null elements
-     * @throws UnsupportedOperationException if the {@code remove} operation
-     *         is not supported by this tree
-     */
-    void removeNode(Node<T> node);
-
-    /**
-     * Returns true if the specified node is a descendant of the specified ancestor node, false otherwise.
-     *
-     * @param node the node to check for descent from the ancestor
-     * @param ancestor the ancestor node to check for
-     * @return true if the node is a descendant of the ancestor, false otherwise
-     */
-    boolean isDescendant(Node<T> node, Node<T> ancestor);
-
-    /**
-     * Returns a list of nodes that are descendants of the specified node.
-     *
-     * @param node the node whose descendants are to be returned
-     * @return a list of nodes that are descendants of the specified node
-     */
-    List<Node<T>> getDescendants(Node<T> node);
-
-    /**
-     * This interface represents a node in a tree.
-     *
-     * @param <T> the type of element stored in the node
-     */
+    * A node in a tree.
+    *
+    * @param <T> the type of value stored in the node
+    */
     interface Node<T> {
 
         /**
-         * Returns the element stored in the node.
+         * Gets the value stored in this node.
          *
-         * @return the element stored in the node
+         * @return the value stored in this node
          */
-        T getElement();
+        T getValue();
 
         /**
-         * Sets the element stored in the node.
+         * Adds a child node to this node.
          *
-         * @param element the element to be stored in the node
-         */
-        void setElement(T element);
-
-        /**
-         * Returns the parent node of this node.
-         *
-         * @return the parent node of this node
-         */
-        Node<T> getParent();
-
-        /**
-         * Sets the parent node of this node.
-         *
-         * @param parent the parent node of this node
-         */
-        void setParent(Node<T> parent);
-
-        /**
-         * Returns the children of this node.
-         *
-         * @return the children of this node
-         */
-        List<Node<T>> getChildren();
-
-        /**
-         * Adds a child to this node.
-         *
-         * @param child the child node to be added
+         * @param child the child node to add
          */
         void addChild(Node<T> child);
 
         /**
-         * Removes a child from this node.
+         * Gets a list of the child nodes of this node.
          *
-         * @param child the child node to be removed
+         * @return a list of the child nodes of this node
          */
-        void removeChild(Node<T> child);
-
-        /**
-         * Returns true if this node is a leaf node (i.e. has no children), false otherwise.
-         *
-         * @return true if this node is a leaf node, false otherwise
-         */
-        boolean isLeaf();
+        List<Node<T>> getChildren();
     }
 }
