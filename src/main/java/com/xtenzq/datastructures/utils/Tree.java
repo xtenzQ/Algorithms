@@ -1,6 +1,6 @@
 package com.xtenzq.datastructures.utils;
 
-import com.xtenzq.datastructures.lists.List;
+import java.util.List;
 
 /**
  * An abstract data type representing a hierarchical tree structure consisting of connected nodes.
