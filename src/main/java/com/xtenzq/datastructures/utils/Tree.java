@@ -1,7 +1,5 @@
 package com.xtenzq.datastructures.utils;
 
-import java.util.List;
-
 /**
  * An abstract data type representing a hierarchical tree structure consisting of connected nodes.
  *
@@ -71,33 +69,4 @@ public interface Tree<T> {
      * @return {@code true} if this tree contains no nodes
      */
     boolean isEmpty();
-
-    /**
-    * A node in a tree.
-    *
-    * @param <T> the type of value stored in the node
-    */
-    interface Node<T> {
-
-        /**
-         * Gets the value stored in this node.
-         *
-         * @return the value stored in this node
-         */
-        T getValue();
-
-        /**
-         * Adds a child node to this node.
-         *
-         * @param child the child node to add
-         */
-        void addChild(Node<T> child);
-
-        /**
-         * Gets a list of the child nodes of this node.
-         *
-         * @return a list of the child nodes of this node
-         */
-        List<Node<T>> getChildren();
-    }
 }
