@@ -13,7 +13,6 @@ public interface Tree<T> {
      * Inserts the specified value into the tree.
      *
      * @param value the value to be inserted into this tree
-     * @return {@code true} if this tree changed as a result of the insertion
      * @throws ClassCastException if the class of the specified element
      *         prevents it from being inserted into this tree
      * @throws NullPointerException if the specified element is null and this
@@ -21,7 +20,7 @@ public interface Tree<T> {
      * @throws IllegalArgumentException if some property of this element
      *         prevents it from being inserted into this tree
      */
-    boolean insert(T value);
+    void insert(T value);
 
     /**
      * Removes the node with the specified value from this tree (optional operation).
