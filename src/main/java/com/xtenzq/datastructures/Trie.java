@@ -12,8 +12,11 @@ import java.util.Map;
  *
  * @author Nikita Rusetskii
  */
-public class Trie implements Tree<String>, Cloneable {
+public class Trie implements Tree<String> {
 
+    /**
+     *
+     */
     private final TrieNode root;
 
     public Trie() {
@@ -26,15 +29,13 @@ public class Trie implements Tree<String>, Cloneable {
      * @implSpec String
      * @return
      */
-    public boolean insert(String value) {
+    public void insert(String value) {
         TrieNode current = root;
 
-        for (char l: value.toCharArray()) {
-            current = current.children.computeIfAbsent(l, c -> new TrieNode(l));
+        for (char letter: value.toCharArray()) {
+            current = current.children.computeIfAbsent(letter, c -> new TrieNode(letter));
         }
         current.eow = true;
-
-        return true;
     }
 
     @Override
@@ -48,6 +49,7 @@ public class Trie implements Tree<String>, Cloneable {
     }
 
     /**
+     * {@inheritDoc}
      *
      * @param value the value whose presence in this tree is to be tested
      * @return
@@ -56,8 +58,8 @@ public class Trie implements Tree<String>, Cloneable {
     public boolean contains(String value) {
         TrieNode current = root;
 
-        for (char l : value.toCharArray()) {
-            TrieNode node = current.children.get(l);
+        for (char letter : value.toCharArray()) {
+            TrieNode node = current.children.get(letter);
             if (node == null) return false;
             current = node;
         }
@@ -73,15 +75,6 @@ public class Trie implements Tree<String>, Cloneable {
     @Override
     public boolean isEmpty() {
         return false;
-    }
-
-    @Override
-    public Trie clone() {
-        try {
-            return (Trie) super.clone();
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 
     @Override
