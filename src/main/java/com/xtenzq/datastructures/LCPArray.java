@@ -14,6 +14,7 @@ public class LCPArray extends GenericArray<LCPArray.LCPEntry> {
     public LCPArray(String text) {
         super(LCPEntry.class, text.length());
         suffixArray = new SuffixArray(text);
+        suffixArray.build();
     }
 
     /**
