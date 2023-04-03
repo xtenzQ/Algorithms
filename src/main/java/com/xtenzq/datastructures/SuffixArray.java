@@ -15,19 +15,17 @@ public class SuffixArray extends GenericArray<SuffixArray.Suffix> {
     public SuffixArray(String text) {
         super(Suffix.class, text.length());
         this.text = text;
-        build();
-        // sort alphabetically
-        Arrays.sort(this.array);
     }
 
     /**
      * Construct a suffix by taking a substring from the end of a string to the beginning.
      * Time complexity: O(n)
      */
-    private void build() {
+    public void build() {
         for (int i = getSize() - 1; i >= 0; i--) {
             array[i] = new Suffix(text.substring(i, getSize()));
         }
+        Arrays.sort(this.array);
     }
 
     /**
@@ -45,7 +43,7 @@ public class SuffixArray extends GenericArray<SuffixArray.Suffix> {
     /**
      * Suffix is a substring at the end of a string of characters
      */
-    static class Suffix implements Comparable<Suffix> {
+    public static class Suffix implements Comparable<Suffix> {
         public String getValue() {
             return value;
         }

@@ -14,14 +14,13 @@ public class LCPArray extends GenericArray<LCPArray.LCPEntry> {
     public LCPArray(String text) {
         super(LCPEntry.class, text.length());
         suffixArray = new SuffixArray(text);
-        build();
     }
 
     /**
      * Constructs an LCP array by counting common substring chars at the beginning of suffix
      * Time complexity: O(n)
      */
-    private void build() {
+    public void build() {
         String previous = "";
         int index = 0;
         for (SuffixArray.Suffix entry : suffixArray) {
@@ -41,6 +40,18 @@ public class LCPArray extends GenericArray<LCPArray.LCPEntry> {
             lcpValues[i] = array[i].getIndex();
         }
         return lcpValues;
+    }
+
+    /**
+     * Returns an array of the suffixes contained in this array
+     * @return array of suffix values
+     */
+    public String[] suffixList() {
+        String[] suffixes = new String[getSize()];
+        for (int i = 0; i < getSize(); i++) {
+            suffixes[i] = array[i].getValue().getValue();
+        }
+        return suffixes;
     }
 
     /**
@@ -65,7 +76,7 @@ public class LCPArray extends GenericArray<LCPArray.LCPEntry> {
         return sub;
     }
 
-    protected static class LCPEntry extends Entry<Integer, SuffixArray.Suffix> {
+    public static class LCPEntry extends Entry<Integer, SuffixArray.Suffix> {
 
         public LCPEntry(int value, SuffixArray.Suffix suffix) {
             super(value, suffix);
