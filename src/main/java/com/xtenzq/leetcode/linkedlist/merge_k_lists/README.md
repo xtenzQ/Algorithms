@@ -1,4 +1,8 @@
-# Merge K Sorted Lists
+# Merge K Sorted Lists Solution
+
+![Hard difficulty](https://img.shields.io/badge/Difficulty-Hard-red.svg)
+[![LeetCode](https://img.shields.io/badge/LeetCode-Link-gold?logo=leetcode)](https://leetcode.com/problems/merge-k-sorted-lists/)
+[![LeetCode](https://img.shields.io/badge/Source%20Code-Link-blue?logo=github)](MergeKSortedLists.java)
 
 | Time Complexity | Space Complexity |
 |-----------------|------------------|
