@@ -1,8 +1,9 @@
 # Merge K Sorted Lists
 
-| Approach                      | Time Complexity | Space Complexity |
-|-------------------------------|-----------------|------------------|
-| Priority Queue               | \$O(N log k)$   | \$O(k)$          |
+| Time Complexity | Space Complexity |
+|-----------------|------------------|
+| \$O(N log k)$   | \$O(k)$          |
+
 where \$N$ is the total number of nodes in all lists and \$k$ is the number of linked lists. Each insertion and extraction operation on the priority queue takes \$O(log k)$ time, and we perform \$N$ such operations.
 
 ## Data structure
