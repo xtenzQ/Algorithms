@@ -1,5 +1,7 @@
 package com.xtenzq.leetcode.utils;
 
+import java.util.Objects;
+
 public class ListNode {
     public int val;
     public ListNode next;
@@ -23,13 +25,19 @@ public class ListNode {
 
     @Override
     public String toString() {
-        return val + " " + ((next != null) ? next.toString() : "");
+        return String.valueOf(val);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return (val == ((ListNode)obj).val) &&
-                (next == null || next.equals(((ListNode) obj).next));
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        ListNode other = (ListNode) obj;
+        return val == other.val && Objects.equals(next, other.next);
     }
 
     public static ListNode build(int[] list) {
