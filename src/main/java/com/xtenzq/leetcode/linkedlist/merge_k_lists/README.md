@@ -1,5 +1,9 @@
 # Merge K Sorted Lists
 
+| Approach                      | Time Complexity | Space Complexity |
+|-------------------------------|-----------------|------------------|
+| Priority Queue               | \$O(N log k)$   | \$O(k)$          |
+
 ## Data structure
 We're gonna use `PriorityQueue<ListNode>` here. Here's why a priority queue is used:
 
