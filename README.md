@@ -5,6 +5,8 @@
 
 This repository contains my implementations of algorithms and data structures in Java, with the goal of improving my problem-solving skills. In addition to algorithms and data structures, it also contains solutions to problems from Hackerrank, Leetcode, and Codeforces.
 
+While the code may not be optimized, it has been written with a focus on correctness and readability. The algorithms and data structures have been thoroughly tested and are believed to be correct, unless otherwise specified.
+
 ## LeetCode
 
 Medium:
